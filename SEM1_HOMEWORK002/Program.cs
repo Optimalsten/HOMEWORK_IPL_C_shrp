@@ -26,10 +26,8 @@ Console.Write("Введите третье число: ");
 strNum = Console.ReadLine();
 int num3 = int.Parse(strNum);
 
-
-
-
-
+int num = Max(num1, num2, num3);
+Console.WriteLine($"\nmax = {num}");
 
 Console.Write("\nДля продолжения нажмите любую клавишу..."); //  "\n - "возврат каретки"
 Console.Read(); // Задержка экрана
