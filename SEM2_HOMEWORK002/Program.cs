@@ -29,10 +29,12 @@ int Exponntt(int arg1, int arg2)
 }
 
 Console.WriteLine("\nЗадайте целое (положительное или отрицательное) число (N) " +
+"\n- в диапазоне [-2 147 483 648; 2 147 483 647] " +
 "\n- для последующего вывода на печать третьей цифры этого числа.");
 Console.Write("\nВведите число: ");
 
 string number = Console.ReadLine();
+
 int lng = number.Length;
 int num = int.Parse(number);
 int mod = Math.Abs(num);    // определение модуля заданного числа - для обработки далее "делением"
