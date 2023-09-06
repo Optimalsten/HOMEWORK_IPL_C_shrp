@@ -11,15 +11,14 @@ int num = int.Parse(number);
 
 if (num < 100 || num > 999)
 {
-    Console.Write($"Введенное число некорректно {num}");
+    Console.WriteLine($"\nРЕЗУЛЬТАТ: заданное Вами число некорректно {num}");
 }
 else
 {
     // int num1 = num % 10;
     // num = num - num1;
     int num2 = (num % 100) / 10;
-    Console.Write($"Вторая цифра числа {num2}.\n");
+    Console.WriteLine($"\nРЕЗУЛЬТАТ: в заданном Вами числе ({num}) вторая цифра {num2}.");
 }
-
 Console.Write("\nДля продолжения нажмите любую клавишу..."); //  "\n - "возврат каретки"
 Console.Read(); // Задержка экрана
