@@ -26,8 +26,9 @@ double numZ = Math.Pow((numZ2 - numZ1), 2);
 
 double result = Math.Sqrt(numX + numY + numZ);
 
-Console.WriteLine($"\nРезультат равен {Math.Round(result, 3)}.");
+Console.WriteLine($"\nРезультат равен {result:F2}.");
 
 // Задержка экрана
 Console.WriteLine("\nДля продолжения нажмите любую клавишу..."); //  "\n - "возврат каретки"
 Console.Read();
+
