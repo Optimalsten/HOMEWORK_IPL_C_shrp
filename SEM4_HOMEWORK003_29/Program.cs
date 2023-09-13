@@ -3,47 +3,52 @@
 // 1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
 // 6, 1, 33 -> [6, 1, 33]
 
-bool GetNumArr(int size, out int[] arrayNN) // ввод элементов массива, конверт.(контроль допустим.)
+int[] GetNumArr(int size, out bool contrNum) // ввод элементов массива, конверт.(контроль допустим.)
 {
     int[] arrayNN = new int[size];
-    bool contrNum = true;
-    
+    string numberStr;
+    contrNum = true; // интегратор контроля допустимости введеных значений True/False
+    bool contrTem; // переменная контроля допустимости текущего введенного значения
+           
     Console.WriteLine($"\nЗадайте массив NN[] из {size} элементов (целых чисел)" +
-    "\n для последующего вывода массива на экран.");
+    "\nдля последующего вывода массива на экран.\n");
     
     for (int i = 0; i < size;  i++)
     {
-        Console.WriteLine($"Задайте значение {i}-го элемента массива. NN[{i}] = ");
-        string numberStr = Console.ReadLine();
+        Console.Write($"Задайте значение {i}-го элемента массива. NN[{i}] = ");
+        numberStr = Console.ReadLine();
 
-        //contrNum = int.TryParse(numberStr, out int numN);
-        contrNum = contrNum & int.TryParse(numberStr, out int numN);
+        contrTem = int.TryParse(numberStr, out int numN);
+        contrNum = contrNum && contrTem;
+        
         arrayNN[i] = numN; // В случае некорректного ввода array[i] будет = 0
     }
-    return contrNum;
+    return arrayNN;
 }
 
-void Print(int[]arr)
+void PrintScr(int[]arr) // вывод на экран результатов задания массива с клавиатуры
 {
     int length = arr.Length;
+    Console.Write($"\nЗадан массив целых чисел NN[] из {length} элемента(ов):\n[  ");
     for (int i = 0; i < length; i++)
     {
-        Console.Write($"{arr[i]} ");
+        Console.Write($"{arr[i]}  ");
     }
+    Console.Write($"]");
 }
 
 int sizeArr = 8;
 int[] arrayNN = new int[sizeArr];
-bool contrN = GetNumArr(sizeArr, out int[] arrayNN);
-if (!contrN)
+arrayNN = GetNumArr(sizeArr, out bool contrN); // элементы с некоррект.данными = 0
+if (!contrN)  // если при вводе значений элементов массива были некорректные данные
 {
     Console.WriteLine($"\nНе все заданные элементы массива целых чисел корректны.");
 }
-else
+else // если все значения элементов массива были введены корректно - то вывод на экран
 {
-    Print(arrayNN);
+    PrintScr(arrayNN);
 }
 
 // Задержка экрана
-Console.WriteLine("\nДля продолжения нажмите любую клавишу..."); //  "\n - "возврат каретки"
+Console.WriteLine("\n\nДля продолжения нажмите любую клавишу..."); //  "\n - "возврат каретки"
 Console.Read();
