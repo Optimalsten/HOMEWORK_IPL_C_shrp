@@ -7,7 +7,7 @@
 int GetStr(out bool contrNum) // ввод c клавиатуры, конвертация (контроль допустимости)
 {
     Console.Write("\nЗадайте натуральное (положительное целое)" +
-    "\n число N для определения количества цифр в нем. N = ");
+    "\n число N для определения суммы цифр в числе: N = ");
     
     string numberStr = Console.ReadLine();
     contrNum = int.TryParse(numberStr, out int numN);
