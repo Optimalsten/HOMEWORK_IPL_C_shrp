@@ -4,6 +4,20 @@
 // которая покажет количество чётных чисел в массиве.
 // [345, 897, 568, 234] -> 2
 
+// МЕТОД ЗАДАНИЯ с клав-ы РАЗМЕРА МАССИВА, с контролем допустимости типа значения
+int GetNumberContr(string message, out bool contrNum)  // conrtNum - True (корректно)/False (некорректно)
+{
+    // Console.Write("\n Задайте натуральное (положительное целое)" +
+    // "\n число элементов массива: N = ");
+    
+    Console.Write($"Задайте число {message}");
+
+    string numberStr = Console.ReadLine();
+    contrNum = int.TryParse(numberStr, out int numN);
+    return numN;
+}
+
+// МЕТОД ЗАДАНИЯ (ввода) МАССИВА целых чисел, с помощью Генератора СЧ, в диап. [min, max]
 int[] GetArray(int size, int min, int max)
 {
     int[] array = new int[size];
@@ -16,6 +30,7 @@ int[] GetArray(int size, int min, int max)
     return array;
 }
 
+// МЕТОД ВЫВОДА НА ЭКРАН (в строку) значений массива
 void Print(int[] arr)
 {
     for (int i = 0; i < arr.Length; i++)
@@ -25,39 +40,25 @@ void Print(int[] arr)
     Console.WriteLine();
 }
 
-int GetCountEven(int[] arr) // Метод - подсчет количества четных чисел в массиве
-{
-    int countN = 0;
-    for (int i = 0; i < arr.Length; i++)
-    {
-        if (arr[i] % 2 == 0)
-        {
-            countN++;
-        }
-    }
-    return countN;
-}
-
-// int GetNumber(string message) // Метод - ввод c клавиатуры, вариант с СЕМИНАРА
+// int GetCountEven(int[] arr) // Метод - подсчет количества четных чисел в массиве
 // {
-//     Console.Write($"Введите целое число {message}: ");
-//     int num = Convert.ToInt32(Console.ReadLine());
-//     return num;
+//     int countN = 0;
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         if (arr[i] % 2 == 0)
+//         {
+//             countN++;
+//         }
+//     }
+//     return countN;
 // }
 
-int GetNumberContr(out bool contrNum) // Метод - ввод c клав-ы, конверт.(контр.допустимости)
-{
-    Console.Write("\n Задайте натуральное (положительное целое)" +
-    "\n число элементов массива: N = ");
-    
-    string numberStr = Console.ReadLine();
-    contrNum = int.TryParse(numberStr, out int numN);
-    return numN;
-}
+
 
 // int sizeArr = GetNumber(" - количество элементов массива") // вызов метода, как в семинаре
 
-int sizeArr = GetNumberContr(out bool contrN);
+int sizeArr = GetNumberContr("элементов массива - натуральное (целое, положительное) N: ",
+                             out bool contrN);
 if (!contrN || sizeArr <= 0)
 {
     Console.WriteLine($"\n Заданное значение N некорректно.\n");
