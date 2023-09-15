@@ -30,14 +30,15 @@ int[] GetArray(int size, int min, int max)
 // МЕТОД ВЫВОДА НА ЭКРАН (в строку) значений массива
 void Print(int[] arr)
 {
+    Console.WriteLine();
     for (int i = 0; i < arr.Length; i++)
     {
-        Console.Write($"{arr[i]} ");
+        Console.Write($" {arr[i]} ");
     }
     Console.WriteLine();
 }
 
-// МЕТОД СУММИРОВАНИЯ элементов массива, индекс которых нечетный.
+// МЕТОД СУММИРОВАНИЯ элементов массива, индекс которых нечетный
 int GetCountEven(int[] arr) //
 {
     int countN = 0;
@@ -48,7 +49,7 @@ int GetCountEven(int[] arr) //
     return countN;
 }
 
-int sizeArr = GetNumberContr("элементов массива - натуральное (целое, положительное) N: ",
+int sizeArr = GetNumberContr("элементов массива - натуральное (целое, положительное) \t N: ",
                              out bool contrN);
 if (!contrN || sizeArr <= 0)
 {
@@ -56,10 +57,10 @@ if (!contrN || sizeArr <= 0)
 }
 else
 {
-    int minArr = GetNumberContr("целое (нижняя граница массива) minN: ",
+    int minArr = GetNumberContr("целое (нижняя граница массива) \t\t\t\t minN: ",
                                 out contrN);
     bool tempor = contrN;
-    int maxArr = GetNumberContr($"целое (верхняя граница массива >= {minArr}) maxN: ",
+    int maxArr = GetNumberContr($"целое (верхняя граница массива >= {minArr}) \t\t\t maxN: ",
                                 out contrN);
     if (!tempor || !contrN || maxArr < minArr)
     {
@@ -67,13 +68,18 @@ else
     }
     else
     {
+        // ЗАДАНИЕ МАССИВА целых чисел, с помощью ГСЧ, в диап. [minArr, maxArr]  
         int[] arr = GetArray(sizeArr, minArr, maxArr);
+
+        // ВЫВОД на экран "сгенерированного" массива
         Print(arr);
+
+        // ОПРЕДЕЛЕНИЕ и ВЫВОД на экран РЕЗУЛЬТАТА        
         Console.WriteLine($"\nСумма элементов массива, индекс которых нечетный," 
-                        + $"\nравна {GetCountEven(arr)}.\n");
+                        + $" равна \t\t {GetCountEven(arr)}.\n");
     }
 }
 
 // Задержка экрана
-Console.Write("\nДля продолжения нажмите любую клавишу..."); //  "\n - "возврат каретки"
+Console.Write("\nДля продолжения нажмите любую клавишу...\n"); //  "\n - "возврат каретки"
 Console.Read();
