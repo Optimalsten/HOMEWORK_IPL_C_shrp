@@ -30,8 +30,7 @@ double[] GetNumDblArr(int size, out bool contrNumber)
     double[] arrayDbl = new double[size];
     // string numberStr;
     contrNumber = true; // интегратор контроля допустимости введеных значений True/False
-    // bool contrTem; // переменная контроля допустимости текущего введенного значения
-           
+
     Console.WriteLine($"\n Задайте последовательно {size} вещественных чисел.");
     for (int i = 0; i < size;  i++)
     {
@@ -56,7 +55,6 @@ int GetNumGreater0(double[] arr)
     return counter;
 }
 
-
 // МЕТОД 5 - вывод на экран результатов задания массива вещественных чисел с клавиатуры
 void PrintScrDbl(double[] arrDbl)
 {
@@ -80,15 +78,13 @@ else
 {
     // ЗАДАНИЕ с клав-ы массива вещественного числа, конвертация с контролем допустим.типа значения
     double[] arr = GetNumDblArr(sizeArr, out bool contrNumb);
-    // bool tempor = contrNumb;
-    
     if (!contrNumb)
     {
         Console.WriteLine($"\n Заданные значения (которые должны быть числами) некорректны.\n");
     }
     else
     {
-        // ВЫВОД на экран "сгенерированного" массива
+        // ВЫВОД на экран "заданного" массива
         PrintScrDbl(arr);
 
         // ОПРЕДЕЛЕНИЕ и ВЫВОД на экран РЕЗУЛЬТАТА
