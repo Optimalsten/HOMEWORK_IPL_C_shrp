@@ -260,4 +260,3 @@ string DecToNum(int decNumber, int otherSystem = 2)
     return res;
 }
 
-20:40
