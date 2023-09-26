@@ -1,5 +1,5 @@
 ﻿using System;
-
+// ОШИБКА В КОДЕ - см. СТРОКУ 12 (Проверил)
 public class Answer {
   static Random random = new Random();
 
@@ -9,6 +9,7 @@ public class Answer {
     for (int i = 0; i < m; i++) {
       for (int j = 0; j < n; j++) {
         matrix[i, j] = random.Next(minLimitRandom, maxLimitRandom + 1) + random.NextDouble();
+        // ВЫШЕ В СТРОКЕ ОШИБКА - по-моему "+1" некорректно. Метод генерирует за предел диапазона
       }
     }
 

@@ -1,5 +1,5 @@
 ﻿using System;
-
+// ОШИБКА В КОДЕ - см. СТРОКУ 31.  (+СТРОКУ 44 - несущественно)
 public class Answer {
     public static void PrintArray (int [,] matrix)
     {
@@ -28,6 +28,7 @@ public class Answer {
         return newMatrix;
     }
 
+// РЕШЕНИЕ С ПЛОЩАДКИ - С ОШИБКОЙ (для х=1 и y=1 ответ будет неверный)
     public static int[] FindNumberByPosition (int [,] matrix, int rowPosition, int columnPosition)
     {  
         int [] number={0,-1};
@@ -40,6 +41,7 @@ public class Answer {
         return number;
     }
 
+// РЕШЕНИЕ С ПЛОЩАДКИ - Нотация CamelCase? (указаны параметры X и Y -> переменные с большой буквы)
     public static void PrintCheckIfError (int[] results, int X, int Y)
     {
         if (results[1]==-1){Console.WriteLine("There is no such index");}

@@ -100,7 +100,7 @@ int[] FindNumberByPosition (int [,] matrix, int rowPosition, int columnPosition)
 // Если такого элемента нет, вывести на экран "There is no such index".
 // Если элемент есть, вывести на экран "The number in [{x}, {y}] is {значение}".
 
-// РЕШЕНИЕ С ПЛОЩАДКИ - С ОШИБКОЙ (указаны параметры метода X и Y - переменные с большой буквы)
+// РЕШЕНИЕ С ПЛОЩАДКИ - патерна? (указаны параметры метода X и Y - переменные с большой буквы)
 
 void PrintCheckIfError (int[] results, int x, int y)
 {
@@ -123,8 +123,8 @@ int n, m, k, x, y;
 n = 4;
 m = 5;
 k = 3;
-x = 2;
-y = 2;
+x = 1;
+y = 1;
 // 
 // Не удаляйте строки ниже
 // 

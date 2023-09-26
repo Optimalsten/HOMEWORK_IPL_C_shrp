@@ -47,7 +47,6 @@ public class Answer
             Console.WriteLine();
         }
     }
-}
 
     // Не удаляйте и не меняйте метод Main! 
     public static void Main(string[] args)
