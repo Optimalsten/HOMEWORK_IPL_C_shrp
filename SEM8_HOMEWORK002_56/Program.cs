@@ -20,12 +20,13 @@ void PrintMatrix(int[,] matrix)
         {
             Console.Write($" {matrix[i, l]}\t");
         }
-        Console.WriteLine();
+        Console.WriteLine($"\t\t строка под индексом j = {i}\t");
+        // Console.WriteLine();
     }
 }
 
 // МЕТОД 3 - ЗАДАНИЕ 2-мерного МАССИВА целых чисел, с помощью Генератора СЧ, в диап. [min, max]
-int[,] GetMatrix(int rows, int columns, int min = 0, int max = 99)
+int[,] GetMatrix(int rows, int columns, int min = 0, int max = 9)
 {
     int[,] matrix = new int[rows, columns];
     Random rand = new Random();
@@ -50,12 +51,12 @@ int GetSumSqr1DimArr(int[] array)
     return count;
 }
 
-// МЕТОД 5 - Поиск строки матрицы с наименьшей суммой квадратов
+// МЕТОД 5 - Поиск строки 2-хмерного массива с наименьшей суммой квадратов
 void SortRowsIncr2DimMatr(int[,] matrix, out int minSummSqrRow, out int rowMinSummSqr)
 {
+    minSummSqrRow = 2147483647; // присвоение начального значения переменной суммы квадратов
+    rowMinSummSqr = 0; // присвоение начального значения переменной номера строки
     int[] array = new int[matrix.GetLength(1)];
-    int minSummSqrRow = 2147483647; // присвоение начального значения
-    int rowMinSummSqr = 0; // присвоение начального значения
     int temp; // инициализация
     
     for (int i = 0; i < matrix.GetLength(0); i++)
@@ -65,19 +66,19 @@ void SortRowsIncr2DimMatr(int[,] matrix, out int minSummSqrRow, out int rowMinSu
             array[j] = matrix[i, j];
         }
         
-        temp = GetSumSqr1DimArr(int[] array);
+        temp = GetSumSqr1DimArr(array);
         if (temp < minSummSqrRow)
         {
             minSummSqrRow = temp;
-            rowMinSummSqr = i; // присвоение номера текущей строки (+1 = номер строки матрицы)
+            rowMinSummSqr = i; // присвоение номера текущей строки
         }
     }
 }
 
 Console.Clear();
 Console.WriteLine();
-int rows = SetNumber("- количество строк (< или > количества столбцов)");
-int columns = SetNumber("- количество столбцов (неравное количеству строк)");
+int rows = SetNumber("- количество строк массива (< или > количества столбцов)");
+int columns = SetNumber("- количество столбцов массива (не равное количеству строк)");
 if (rows == columns)
 {
     Console.WriteLine($"\n Количество строк = количеству столбцов. Данные некорректны.");
@@ -86,14 +87,16 @@ else
 {
     int[,] result = GetMatrix(rows, columns);
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine(" Исходная (генерированная Random) матрица:");
+    Console.WriteLine(" Исходный (генерированный Random) массив:");
     PrintMatrix(result);
     Console.WriteLine();
 
-    SortRowsIncr2DimMatr(result);
+    int minSummSqrRow; // присвоение начального значения
+    int rowMinSummSqr; // присвоение начального значения
+    SortRowsIncr2DimMatr(result, out minSummSqrRow, out rowMinSummSqr);
     Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine(" Итоговая матрица (элементы строк упорядочены по убыванию):");
-    PrintMatrix(result);
+    Console.WriteLine($"\n Наименьшую сумму квадратов элементов (Sum = {minSummSqrRow})" +
+                      $" имеет строка массива под индексом j = {rowMinSummSqr}.");
     Console.WriteLine();    
 }
 
