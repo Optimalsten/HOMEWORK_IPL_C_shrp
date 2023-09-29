@@ -40,22 +40,22 @@ int[,] GetMatrix(int rows, int columns, int min = 0, int max = 9)
     return matrix;
 }
 
-// МЕТОД 4 - Поиск суммы квадратов 1-мерного МАССИВА 
-int GetSumSqr1DimArr(int[] array)
+// МЕТОД 4 - Поиск суммы элементов 1-мерного МАССИВА 
+int GetSum1DimArr(int[] array)
 {
     int count = 0;
     foreach (int item in array)
     {
-        count += item * item;
+        count += item;
     }
     return count;
 }
 
-// МЕТОД 5 - Поиск строки 2-хмерного массива с наименьшей суммой квадратов
-void SortRowsIncr2DimMatr(int[,] matrix, out int minSummSqrRow, out int rowMinSummSqr)
+// МЕТОД 5 - Поиск строки 2-хмерного массива с наименьшей суммой элементов
+void SortRowsIncr2DimMatr(int[,] matrix, out int minSummRow, out int rowMinSumm)
 {
-    minSummSqrRow = 2147483647; // присвоение начального значения переменной суммы квадратов
-    rowMinSummSqr = 0; // присвоение начального значения переменной номера строки
+    minSummRow = 2147483647; // присвоение начального значения переменной суммы квадратов
+    rowMinSumm = 0; // присвоение начального значения переменной номера строки
     int[] array = new int[matrix.GetLength(1)];
     int temp; // инициализация
     
@@ -66,11 +66,11 @@ void SortRowsIncr2DimMatr(int[,] matrix, out int minSummSqrRow, out int rowMinSu
             array[j] = matrix[i, j];
         }
         
-        temp = GetSumSqr1DimArr(array);
-        if (temp < minSummSqrRow)
+        temp = GetSum1DimArr(array);
+        if (temp < minSummRow)
         {
-            minSummSqrRow = temp;
-            rowMinSummSqr = i; // присвоение номера текущей строки
+            minSummRow = temp;
+            rowMinSumm = i; // присвоение номера текущей строки
         }
     }
 }
@@ -91,12 +91,12 @@ else
     PrintMatrix(result);
     Console.WriteLine();
 
-    int minSummSqrRow; // присвоение начального значения
-    int rowMinSummSqr; // присвоение начального значения
-    SortRowsIncr2DimMatr(result, out minSummSqrRow, out rowMinSummSqr);
+    int minSummRow; // присвоение начального значения
+    int rowMinSumm; // присвоение начального значения
+    SortRowsIncr2DimMatr(result, out minSummRow, out rowMinSumm);
     Console.ForegroundColor = ConsoleColor.Yellow;
-    Console.WriteLine($"\n Наименьшую сумму квадратов элементов (Sum = {minSummSqrRow})" +
-                      $" имеет строка массива под индексом j = {rowMinSummSqr}.");
+    Console.WriteLine($"\n Наименьшую сумму элементов (Sum = {minSummRow})" +
+                      $" имеет строка массива под индексом j = {rowMinSumm}.");
     Console.WriteLine();    
 }
 
